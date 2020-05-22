@@ -2,6 +2,7 @@
 
 + [Reverse linked list](#reverse-linked-list)
 + [Middle of the Linked List](#middle-of-the-linked-list)
++ [Palindrome Linked List](#palindrome-linked-list)
 
 ## Reverse linked list
 
@@ -34,5 +35,28 @@ def middleNode(self, head: ListNode) -> ListNode:
         fast = fast.next.next
         slow = slow.next
     return slow
+
+```
+## Palindrome Linked List
+
+https://leetcode.com/problems/palindrome-linked-list/
+
+```python
+def isPalindrome(self, head: ListNode) -> bool:
+    if not head:
+        return True
+    slow, fast = head, head
+    stack = []
+    while fast and fast.next:
+        stack.append(slow.val)
+        slow = slow.next
+        fast = fast.next.next
+    if fast:
+        slow = slow.next
+    while slow and len(stack):
+        if stack.pop() != slow.val:
+            return False
+        slow = slow.next
+    return True
 
 ```
