@@ -1,14 +1,12 @@
 #arrays
 
-+[Two sum](#two-sum)
-+[3sum](#3sum)
-+[Subarray sum equals k](#subarray-sum-equals-k)
++ [Two sum](#two-sum)
 
 ## Two sum
 
 https://leetcode.com/problems/two-sum
 
-'''python
+```python
 def twoSum(self, nums: List[int], target: int) -> List[int]:
     passed = {}
     i = -1
@@ -20,20 +18,4 @@ def twoSum(self, nums: List[int], target: int) -> List[int]:
             passed[num] = i
     return []
 
-'''
-
-## 3sum
-
-https://leetcode.com/problems/3sum
-
-'''python
-#code
-'''
-
-## Subarray sum equals k
-
-https://leetcode.com/problems/subarray-sum-equals-k/
-
-'''python
-#code
-'''
+```
