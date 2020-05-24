@@ -1,29 +1,24 @@
 #tree
 
-+ [Subtree of Another Tree](#subtree-of-another-tree)
++ [Validate Binary Search Tree](#validate-binary-search-tree)
 
-## Subtree of Another Tree
+## Validate Binary Search Tree
 
-https://leetcode.com/problems/subtree-of-another-tree/
+https://leetcode.com/problems/validate-binary-search-tree/
 
 ```python
-def isSubtree(self, s: TreeNode, t: TreeNode) -> bool:
-    if not s and not t:
+def isValidBST(self, root: TreeNode) -> bool:
+    if not root:
         return True
-    if (not s and t) or (s and not t):
-        return False
-    if self.isSameTree(s, t):
-        return True
-    return self.isSubtree(s.left, t) or self.isSubtree(s.right, t)
-
-
-def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-    if not p and not q:
-        return True
-    if not p or not q or p.val != q.val:
-        return False
-    isLeftSame = self.isSameTree(p.left, q.left)
-    isRightSame = self.isSameTree(p.right, q.right)
-    return isLeftSame and isRightSame
+    stack = [(root, -float('inf'), float('inf'))]
+    while stack:
+        node, left, right = stack.pop()
+        if node.val <= left or node.val >= right:
+            return False
+        if node.left:
+            stack.append((node.left, left, node.val))
+        if node.right:
+            stack.append((node.right, node.val, right))
+    return True
 
 ```
