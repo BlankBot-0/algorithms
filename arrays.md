@@ -1,22 +1,35 @@
 #arrays
 
-+ [Subarray Sum Equals k](#subarray-sum-equals-k)
++ [3sum](#3sum)
 
-## Subarray Sum Equals k
+## 3sum
 
-https://leetcode.com/problems/subarray-sum-equals-k/
+https://leetcode.com/problems/3sum/
 
 ```python
-def subarraySum(self, nums: List[int], k: int) -> int:
-    if not nums:
-        return 0
-    count = collections.Counter()
-    count[0] = 1
-    ans = summ = 0
-    for num in nums:
-        summ += num
-        ans += count[summ-k]
-        count[summ] += 1
-    return ans
+def threeSum(self, nums: List[int]) -> List[List[int]]:
+    triplets = []
+    nums.sort()
+    if len(nums) < 3:
+        return triplets
+    for i in range(len(nums) - 2):
+        if i > 0 and nums[i] == nums[i-1]:
+            continue
+        left, right = i + 1, len(nums) - 1
+        while left < right:
+            summ = nums[i] + nums[left] + nums[right]
+            if summ == 0:
+                triplets.append([nums[i], nums[left], nums[right]])
+                left += 1
+                right -= 1
+                while left < right and nums[left] == nums[left - 1]:
+                    left += 1
+                while left < right and nums[right] == nums[right + 1]:
+                    right -= 1
+            elif summ < 0:
+                left += 1
+            else:
+                right -= 1
+    return triplets
 
 ```
