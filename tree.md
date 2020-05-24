@@ -2,6 +2,7 @@
 
 + [Symmetric Tree](#symmetric-tree)
 + [Maximum Depth of Binary Tree](#maximum-depth-of-binary-tree)
++ [Same Tree](#same-tree)
 
 ## Symmetric Tree
 
@@ -48,5 +49,20 @@ def maxDepth(self, root: TreeNode) -> int:
     if not root:
         return 0
     return max(self.maxDepth(root.left), self.maxDepth(root.right)) + 1
+
+```
+## Same Tree
+
+https://leetcode.com/problems/same-tree/
+
+```python
+def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
+    if not p and not q:
+        return True
+    if not p or not q or p.val != q.val:
+        return False
+    isLeftSame = self.isSameTree(p.left, q.left)
+    isRightSame = self.isSameTree(p.right, q.right)
+    return isLeftSame and isRightSame
 
 ```
