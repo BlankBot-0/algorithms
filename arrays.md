@@ -1,21 +1,22 @@
 #arrays
 
-+ [Two Sum](#two-sum)
++ [Subarray Sum Equals k](#subarray-sum-equals-k)
 
-## Two Sum
+## Subarray Sum Equals k
 
-https://leetcode.com/problems/two-sum/
+https://leetcode.com/problems/subarray-sum-equals-k/
 
 ```python
-def twoSum(self, nums: List[int], target: int) -> List[int]:
-    passed = {}
-    i = -1
+def subarraySum(self, nums: List[int], k: int) -> int:
+    if not nums:
+        return 0
+    count = collections.Counter()
+    count[0] = 1
+    ans = summ = 0
     for num in nums:
-        i += 1
-        if target - num in passed:
-            return [passed[target-num], i]
-        else:
-            passed[num] = i
-    return []
+        summ += num
+        ans += count[summ-k]
+        count[summ] += 1
+    return ans
 
 ```
