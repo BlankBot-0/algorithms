@@ -1,19 +1,18 @@
 #tree
 
-+ [Same Tree](#same-tree)
++ [Invert Binary Tree](#invert-binary-tree)
 
-## Same Tree
+## Invert Binary Tree
 
-https://leetcode.com/problems/same-tree/
+https://leetcode.com/problems/invert-binary-tree/
 
 ```python
-def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
-    if not p and not q:
-        return True
-    if not p or not q or p.val != q.val:
-        return False
-    isLeftSame = self.isSameTree(p.left, q.left)
-    isRightSame = self.isSameTree(p.right, q.right)
-    return isLeftSame and isRightSame
+def invertTree(self, root: TreeNode) -> TreeNode:
+    if not root:
+        return None
+    root.left, root.right = root.right, root.left
+    self.invertTree(root.left)
+    self.invertTree(root.right)
+    return root
 
 ```
