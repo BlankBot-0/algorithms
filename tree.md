@@ -3,6 +3,7 @@
 + [Symmetric Tree](#symmetric-tree)
 + [Maximum Depth of Binary Tree](#maximum-depth-of-binary-tree)
 + [Same Tree](#same-tree)
++ [Invert Binary Tree](#invert-binary-tree)
 
 ## Symmetric Tree
 
@@ -64,5 +65,19 @@ def isSameTree(self, p: TreeNode, q: TreeNode) -> bool:
     isLeftSame = self.isSameTree(p.left, q.left)
     isRightSame = self.isSameTree(p.right, q.right)
     return isLeftSame and isRightSame
+
+```
+## Invert Binary Tree
+
+https://leetcode.com/problems/invert-binary-tree/
+
+```python
+def invertTree(self, root: TreeNode) -> TreeNode:
+    if not root:
+        return None
+    root.left, root.right = root.right, root.left
+    self.invertTree(root.left)
+    self.invertTree(root.right)
+    return root
 
 ```
