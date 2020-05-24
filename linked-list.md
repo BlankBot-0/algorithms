@@ -1,18 +1,27 @@
 #linked-list
 
-+ [Middle of the Linked List](#middle-of-the-linked-list)
++ [Palindrome Linked List](#palindrome-linked-list)
 
-## Middle of the linked list
+## Palindrome Linked List
 
-https://leetcode.com/problems/middle-of-the-linked-list/
+https://leetcode.com/problems/palindrome-linked-list/
 
 ```python
-def middleNode(self, head: ListNode) -> ListNode:
-    fast = head
-    slow = head
+def isPalindrome(self, head: ListNode) -> bool:
+    if not head:
+        return True
+    slow, fast = head, head
+    stack = []
     while fast and fast.next:
-        fast = fast.next.next
+        stack.append(slow.val)
         slow = slow.next
-    return slow
+        fast = fast.next.next
+    if fast:
+        slow = slow.next
+    while slow and len(stack):
+        if stack.pop() != slow.val:
+            return False
+        slow = slow.next
+    return True
 
 ```
