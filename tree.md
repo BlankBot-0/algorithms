@@ -1,24 +1,23 @@
 #tree
 
-+ [Validate Binary Search Tree](#validate-binary-search-tree)
++ [Binary Tree Inorder Traversal](#binary-tree-inorder-traversal)
 
-## Validate Binary Search Tree
+## Binary Tree Inorder Traversal
 
-https://leetcode.com/problems/validate-binary-search-tree/
+https://leetcode.com/problems/binary-tree-inorder-traversal/
 
 ```python
-def isValidBST(self, root: TreeNode) -> bool:
-    if not root:
-        return True
-    stack = [(root, -float('inf'), float('inf'))]
-    while stack:
-        node, left, right = stack.pop()
-        if node.val <= left or node.val >= right:
-            return False
-        if node.left:
-            stack.append((node.left, left, node.val))
-        if node.right:
-            stack.append((node.right, node.val, right))
-    return True
+def inorderTraversal(self, root: TreeNode) -> List[int]:
+    traversal = []
+    stack, node = [], root
+    while stack or node:
+        if node:
+            stack.append(node)
+            node = node.left
+        else:
+            node = stack.pop()
+            traversal.append(node.val)
+            node = node.right
+    return traversal
 
 ```
