@@ -4,6 +4,7 @@
 + [Maximum Depth of Binary Tree](#maximum-depth-of-binary-tree)
 + [Same Tree](#same-tree)
 + [Invert Binary Tree](#invert-binary-tree)
++ [Path Sum](#path-sum)
 
 ## Symmetric Tree
 
@@ -79,5 +80,20 @@ def invertTree(self, root: TreeNode) -> TreeNode:
     self.invertTree(root.left)
     self.invertTree(root.right)
     return root
+
+```
+## Path Sum
+
+https://leetcode.com/problems/path-sum/
+
+```python
+def hasPathSum(self, root: TreeNode, sum: int) -> bool:
+    if not root:
+        return False
+    sum -= root.val
+    if not root.left and not root.right and sum == 0:
+        return True
+    return self.hasPathSum(root.left, sum) or \
+        self.hasPathSum(root.right, sum)
 
 ```
