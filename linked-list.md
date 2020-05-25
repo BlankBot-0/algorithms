@@ -6,6 +6,7 @@
 
 https://leetcode.com/problems/palindrome-linked-list/
 
+
 ```python
 def isPalindrome(self, head: ListNode) -> bool:
     if not head:
@@ -23,5 +24,38 @@ def isPalindrome(self, head: ListNode) -> bool:
             return False
         slow = slow.next
     return True
+
+```
+with reverseList:
+```python
+def isPalindrome(self, head: ListNode) -> bool:
+    if not head:
+        return True
+    slow, fast = head, head
+    while fast and fast.next:
+        fast = fast.next.next
+        slow = slow.next
+    slow = self.reverseList(slow)
+    if slow.val != head.val:
+        return False
+    while slow:
+        if head.val != slow.val:
+            return False
+        head = head.next
+        slow = slow.next
+    return True
+
+
+def reverseList(self, head: ListNode) -> ListNode:
+    if not head:
+        return None
+    curr = head
+    prev = None
+    while curr:
+        next = curr.next
+        curr.next = prev
+        prev = curr
+        curr = next
+    return prev
 
 ```
