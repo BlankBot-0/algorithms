@@ -36,8 +36,6 @@ def isPalindrome(self, head: ListNode) -> bool:
         fast = fast.next.next
         slow = slow.next
     slow = self.reverseList(slow)
-    if slow.val != head.val:
-        return False
     while slow:
         if head.val != slow.val:
             return False
